@@ -75,6 +75,124 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-huffman" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/04/26/huffman/" class="article-date">
+  <time class="dt-published" datetime="2025-04-26T07:45:56.662Z" itemprop="datePublished">2025-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/04/26/huffman/">huffman编码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><a href="/pdf/%E7%AC%AC%E4%BA%94%E6%AC%A1%E4%B8%8A%E6%9C%BA.pdf">题目描述</a><br>‘’’c<br>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;</p>
+<p>void swap(int<em>a,int</em>b){<br>	int temp&#x3D;*a;<br>	*a&#x3D;*b;<br>	*b&#x3D;temp;<br>}</p>
+<p>void heapify_down(int arr[],int size,int i){<br>	int smallest&#x3D;i;<br>	int left&#x3D;2<em>i+1;<br>	int right&#x3D;2</em>i+2;</p>
+<pre><code>if(left&lt;size&amp;&amp;arr[left]&lt;arr[smallest])&#123;
+	smallest=left;
+&#125;
+if(right&lt;size&amp;&amp;arr[right]&lt;arr[smallest])&#123;
+	smallest=right;
+&#125;
+if(smallest!=i)&#123;
+	swap(&amp;arr[smallest],&amp;arr[i]);
+	heapify_down(arr,size,smallest);
+&#125;
+</code></pre>
+<p>}</p>
+<p>void build_min_heap(int arr[],int size){<br>	for(int i&#x3D;size&#x2F;2-1;i&gt;&#x3D;0;i–){<br>		heapify_down(arr,size,i);<br>	}<br>}</p>
+<p>void heapify_up(int arr[],int index){<br>	while(index&gt;0){<br>		int parent&#x3D;(index-1)&#x2F;2;<br>		if(arr[index]&lt;arr[parent]){<br>			swap(&amp;arr[parent],&amp;arr[index]);<br>			index&#x3D;parent;<br>		}<br>		else{<br>			break;<br>		}<br>	}<br>}</p>
+<p>int main(){<br>	int N,M;<br>	scanf(“%d %d”,&amp;N,&amp;M);</p>
+<pre><code>int*freq=(int*)calloc(N,sizeof(int));
+int*active_chars=(int*)malloc(N*sizeof(int));
+int active_size=0;
+int output[10000];
+int k=0;
+
+for(int i=0;i&lt;M;i++)&#123;
+	int op;
+	scanf(&quot;%d&quot;,&amp;op);
+	if(op!=0)&#123;
+		int c=op;
+		if(c&lt;1||c&gt;N) continue;
+		int idx=c-1;
+
+		if(freq[idx]==0)&#123;
+			active_chars[active_size++]=c;
+		&#125;
+		freq[idx]++;
+	&#125;
+	else&#123;
+		if(active_size==0)&#123;
+			output[k++]=0;
+			continue;
+		&#125;
+		int size=active_size+1;
+		int*temp=(int*)malloc(size*sizeof(int));
+		temp[0]=1;
+
+		for(int j=0;j&lt;active_size;j++)&#123;
+			temp[j+1]=freq[active_chars[j]-1];
+		&#125;
+
+		build_min_heap(temp,size);
+		int sum=0;
+		int len=size;
+
+		while(len&gt;1)&#123;
+			int a=temp[0];
+			temp[0]=temp[--len];
+			heapify_down(temp,len,0);
+
+			int b=temp[0];
+			temp[0]=temp[--len];
+			heapify_down(temp,len,0);
+
+			sum+=a+b;
+			temp[len++]=a+b;
+			heapify_up(temp,len-1);
+		&#125;
+		output[k++]=sum;
+		free(temp);
+	&#125;
+&#125;
+
+free(freq);
+free(active_chars);
+for(int i=0;i&lt;k;i++)&#123;
+	printf(&quot;%d\n&quot;,output[i]);
+&#125;
+return 0;
+</code></pre>
+<p>}</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://zhaojiale-pku.github.io/2025/04/26/huffman/" data-id="cm9xx9yhc0000i0p14en4fjgx" data-title="huffman编码" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-南湖路一号" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/04/25/%E5%8D%97%E6%B9%96%E8%B7%AF%E4%B8%80%E5%8F%B7/" class="article-date">
@@ -223,6 +341,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2025/04/26/huffman/">huffman编码</a>
+          </li>
         
           <li>
             <a href="/2025/04/25/%E5%8D%97%E6%B9%96%E8%B7%AF%E4%B8%80%E5%8F%B7/">南湖路一号纪事</a>
