@@ -1,409 +1,161 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>赵佳乐的个人博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>赵佳乐的个人博客 - 去往星辰大海的路上</title><meta name="author" content="rainbow"><meta name="copyright" content="rainbow"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
 <meta property="og:title" content="赵佳乐的个人博客">
 <meta property="og:url" content="https://zhaojiale-pku.github.io/index.html">
 <meta property="og:site_name" content="赵佳乐的个人博客">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://zhaojiale-pku.github.io/img/butterfly-icon.png">
 <meta property="article:author" content="rainbow">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="赵佳乐的个人博客" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
-
-<meta name="generator" content="Hexo 7.3.0"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">赵佳乐的个人博客</a>
-      </h1>
+<meta name="twitter:image" content="https://zhaojiale-pku.github.io/img/butterfly-icon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://zhaojiale-pku.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
       
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">去往星辰大海的路上</a>
-        </h2>
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '赵佳乐的个人博客',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">赵佳乐的个人博客</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">赵佳乐的个人博客</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/04/26/huffman/" title="huffman编码">huffman编码</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-04-26T07:45:56.662Z" title="Created 2025-04-26 15:45:56">2025-04-26</time></span></div><div class="content">题目描述‘’’c#include&lt;stdio.h&gt;#include&lt;stdlib.h&gt; void swap(inta,intb){	int temp&#x3D;*a;	*a&#x3D;*b;	*b&#x3D;temp;} void heapify_down(int arr[],int size,int i){	int smallest&#x3D;i;	int left&#x3D;2i+1;	int...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/04/25/%E5%8D%97%E6%B9%96%E8%B7%AF%E4%B8%80%E5%8F%B7/" title="南湖路一号纪事">南湖路一号纪事</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-04-25T14:35:52.698Z" title="Created 2025-04-25 22:35:52">2025-04-25</time></span></div><div class="content">这是湖北省黄冈中学2024届全体学生一起编织的一件名曰青春的毛衣南湖路一号纪事 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/04/25/ptwlsy2/" title="普通物理实验（二）">普通物理实验（二）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-04-25T13:54:27.988Z" title="Created 2025-04-25 21:54:27">2025-04-25</time></span></div><div class="content">Fano共振光信息处理光源的时间相干性用示波器观测动态磁滞回线 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/04/25/a-new-begin/" title="新的开始">新的开始</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-04-25T12:43:40.491Z" title="Created 2025-04-25 20:43:40">2025-04-25</time></span></div><div class="content">第一篇博客 好不容易终于搭建好网站了。祝贺祝贺。 本人对这个网站的预期是一个类似日记+资料分享的糅合。今天是星期五，是奔向星辰大海的一天。 </div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">rainbow</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/26/huffman/" title="huffman编码">huffman编码</a><time datetime="2025-04-26T07:45:56.662Z" title="Created 2025-04-26 15:45:56">2025-04-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/25/%E5%8D%97%E6%B9%96%E8%B7%AF%E4%B8%80%E5%8F%B7/" title="南湖路一号纪事">南湖路一号纪事</a><time datetime="2025-04-25T14:35:52.698Z" title="Created 2025-04-25 22:35:52">2025-04-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/25/ptwlsy2/" title="普通物理实验（二）">普通物理实验（二）</a><time datetime="2025-04-25T13:54:27.988Z" title="Created 2025-04-25 21:54:27">2025-04-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/25/a-new-begin/" title="新的开始">新的开始</a><time datetime="2025-04-25T12:43:40.491Z" title="Created 2025-04-25 20:43:40">2025-04-25</time></div></div></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
       
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Zhaojiale-pku.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
   
-    <article id="post-huffman" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/04/26/huffman/" class="article-date">
-  <time class="dt-published" datetime="2025-04-26T07:45:56.662Z" itemprop="datePublished">2025-04-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/04/26/huffman/">huffman编码</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
+    <ul class="card-archive-list">
       
-        <p><a href="/pdf/%E7%AC%AC%E4%BA%94%E6%AC%A1%E4%B8%8A%E6%9C%BA.pdf">题目描述</a><br>‘’’c<br>#include&lt;stdio.h&gt;<br>#include&lt;stdlib.h&gt;</p>
-<p>void swap(int<em>a,int</em>b){<br>	int temp&#x3D;*a;<br>	*a&#x3D;*b;<br>	*b&#x3D;temp;<br>}</p>
-<p>void heapify_down(int arr[],int size,int i){<br>	int smallest&#x3D;i;<br>	int left&#x3D;2<em>i+1;<br>	int right&#x3D;2</em>i+2;</p>
-<pre><code>if(left&lt;size&amp;&amp;arr[left]&lt;arr[smallest])&#123;
-	smallest=left;
-&#125;
-if(right&lt;size&amp;&amp;arr[right]&lt;arr[smallest])&#123;
-	smallest=right;
-&#125;
-if(smallest!=i)&#123;
-	swap(&amp;arr[smallest],&amp;arr[i]);
-	heapify_down(arr,size,smallest);
-&#125;
-</code></pre>
-<p>}</p>
-<p>void build_min_heap(int arr[],int size){<br>	for(int i&#x3D;size&#x2F;2-1;i&gt;&#x3D;0;i–){<br>		heapify_down(arr,size,i);<br>	}<br>}</p>
-<p>void heapify_up(int arr[],int index){<br>	while(index&gt;0){<br>		int parent&#x3D;(index-1)&#x2F;2;<br>		if(arr[index]&lt;arr[parent]){<br>			swap(&amp;arr[parent],&amp;arr[index]);<br>			index&#x3D;parent;<br>		}<br>		else{<br>			break;<br>		}<br>	}<br>}</p>
-<p>int main(){<br>	int N,M;<br>	scanf(“%d %d”,&amp;N,&amp;M);</p>
-<pre><code>int*freq=(int*)calloc(N,sizeof(int));
-int*active_chars=(int*)malloc(N*sizeof(int));
-int active_size=0;
-int output[10000];
-int k=0;
-
-for(int i=0;i&lt;M;i++)&#123;
-	int op;
-	scanf(&quot;%d&quot;,&amp;op);
-	if(op!=0)&#123;
-		int c=op;
-		if(c&lt;1||c&gt;N) continue;
-		int idx=c-1;
-
-		if(freq[idx]==0)&#123;
-			active_chars[active_size++]=c;
-		&#125;
-		freq[idx]++;
-	&#125;
-	else&#123;
-		if(active_size==0)&#123;
-			output[k++]=0;
-			continue;
-		&#125;
-		int size=active_size+1;
-		int*temp=(int*)malloc(size*sizeof(int));
-		temp[0]=1;
-
-		for(int j=0;j&lt;active_size;j++)&#123;
-			temp[j+1]=freq[active_chars[j]-1];
-		&#125;
-
-		build_min_heap(temp,size);
-		int sum=0;
-		int len=size;
-
-		while(len&gt;1)&#123;
-			int a=temp[0];
-			temp[0]=temp[--len];
-			heapify_down(temp,len,0);
-
-			int b=temp[0];
-			temp[0]=temp[--len];
-			heapify_down(temp,len,0);
-
-			sum+=a+b;
-			temp[len++]=a+b;
-			heapify_up(temp,len-1);
-		&#125;
-		output[k++]=sum;
-		free(temp);
-	&#125;
-&#125;
-
-free(freq);
-free(active_chars);
-for(int i=0;i&lt;k;i++)&#123;
-	printf(&quot;%d\n&quot;,output[i]);
-&#125;
-return 0;
-</code></pre>
-<p>}</p>
-
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/04/">
+            <span class="card-archive-list-date">
+              April 2025
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://zhaojiale-pku.github.io/2025/04/26/huffman/" data-id="cm9xxgv0n0000ukp171b27fdn" data-title="huffman编码" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-南湖路一号" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/04/25/%E5%8D%97%E6%B9%96%E8%B7%AF%E4%B8%80%E5%8F%B7/" class="article-date">
-  <time class="dt-published" datetime="2025-04-25T14:35:52.698Z" itemprop="datePublished">2025-04-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/04/25/%E5%8D%97%E6%B9%96%E8%B7%AF%E4%B8%80%E5%8F%B7/">南湖路一号纪事</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>这是湖北省黄冈中学2024届全体学生一起编织的一件名曰青春的毛衣<br><a href="https://zhaojiale-pku.github.io/word/%E5%8D%97%E6%B9%96%E8%B7%AF%E4%B8%80%E5%8F%B7%E7%BA%AA%E4%BA%8B.docx">南湖路一号纪事</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://zhaojiale-pku.github.io/2025/04/25/%E5%8D%97%E6%B9%96%E8%B7%AF%E4%B8%80%E5%8F%B7/" data-id="cm9xxgv0v0001ukp1crtn3te1" data-title="南湖路一号纪事" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-ptwlsy2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/04/25/ptwlsy2/" class="article-date">
-  <time class="dt-published" datetime="2025-04-25T13:54:27.988Z" itemprop="datePublished">2025-04-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/04/25/ptwlsy2/">普通物理实验（二）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><a href="/pdf/Fano%E5%85%B1%E6%8C%AF%E5%AE%9E%E9%AA%8C.pdf">Fano共振</a><br><a href="/pdf/%E5%85%89%E4%BF%A1%E6%81%AF%E5%A4%84%E7%90%86.pdf">光信息处理</a><br><a href="/pdf/%E5%85%89%E6%BA%90%E7%9A%84%E6%97%B6%E9%97%B4%E7%9B%B8%E5%B9%B2%E6%80%A7.pdf">光源的时间相干性</a><br><a href="/pdf/%E7%94%A8%E7%A4%BA%E6%B3%A2%E5%99%A8%E8%A7%82%E6%B5%8B%E5%8A%A8%E6%80%81%E7%A3%81%E6%BB%9E%E5%9B%9E%E7%BA%BF.pdf">用示波器观测动态磁滞回线</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://zhaojiale-pku.github.io/2025/04/25/ptwlsy2/" data-id="cm9xxgv0w0002ukp16q6g3la9" data-title="普通物理实验（二）" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-a-new-begin" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2025/04/25/a-new-begin/" class="article-date">
-  <time class="dt-published" datetime="2025-04-25T12:43:40.491Z" itemprop="datePublished">2025-04-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/04/25/a-new-begin/">新的开始</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>第一篇博客</p>
-<p>好不容易终于搭建好网站了。<br>祝贺祝贺。</p>
-<p>本人对这个网站的预期是一个类似日记+资料分享的糅合。<br>今天是星期五，是奔向星辰大海的一天。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://zhaojiale-pku.github.io/2025/04/25/a-new-begin/" data-id="cm9xxgv0x0003ukp1buns3fab" data-title="新的开始" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/04/">April 2025</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2025/04/26/huffman/">huffman编码</a>
-          </li>
-        
-          <li>
-            <a href="/2025/04/25/%E5%8D%97%E6%B9%96%E8%B7%AF%E4%B8%80%E5%8F%B7/">南湖路一号纪事</a>
-          </li>
-        
-          <li>
-            <a href="/2025/04/25/ptwlsy2/">普通物理实验（二）</a>
-          </li>
-        
-          <li>
-            <a href="/2025/04/25/a-new-begin/">新的开始</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2025 rainbow<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">4</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-04-26T08:06:22.104Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By rainbow</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
