@@ -1,0 +1,34 @@
+/* 通用字体优化 */
+body {
+    font-family: 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.8; /* 行高可以稍微增大，避免文字挤在一起 */
+  }
+  
+  /* 优化段落标点和文字之间的间距 */
+  p, li, blockquote {
+    line-height: 1.8;
+    font-feature-settings: "palt";  /* 开启“proportional alternate”特性，改善标点 */
+    text-align: justify;  /* 两端对齐，避免文字左边有空隙 */
+    margin-bottom: 1.5em;  /* 给段落添加间距 */
+  }
+  
+  /* 代码块字体和行高优化 */
+  code {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  /* 强调标题字体 */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Microsoft YaHei', sans-serif;
+    font-weight: bold;
+  }
+  
+  /* 优化列表符号对齐 */
+  ul, ol {
+    line-height: 1.8;
+    margin-bottom: 1.5em;
+  }
+  
