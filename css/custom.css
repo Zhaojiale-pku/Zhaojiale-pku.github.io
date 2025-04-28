@@ -1,34 +1,107 @@
-/* 通用字体优化 */
+/* ===== 通用基础字体优化 ===== */
 body {
-    font-family: 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.8; /* 行高可以稍微增大，避免文字挤在一起 */
-  }
-  
-  /* 优化段落标点和文字之间的间距 */
-  p, li, blockquote {
-    line-height: 1.8;
-    font-feature-settings: "palt";  /* 开启“proportional alternate”特性，改善标点 */
-    text-align: justify;  /* 两端对齐，避免文字左边有空隙 */
-    margin-bottom: 1.5em;  /* 给段落添加间距 */
-  }
-  
-  /* 代码块字体和行高优化 */
-  code {
-    font-family: 'Consolas', 'Courier New', monospace;
-    font-size: 14px;
-    line-height: 1.4;
-  }
-  
-  /* 强调标题字体 */
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Microsoft YaHei', sans-serif;
-    font-weight: bold;
-  }
-  
-  /* 优化列表符号对齐 */
-  ul, ol {
-    line-height: 1.8;
-    margin-bottom: 1.5em;
-  }
-  
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  letter-spacing: 0.05em; /* 稍微拉开字距，提升阅读体验 */
+  font-feature-settings: "palt", "fwid"; /* 标点优化 */
+  color: #333; /* 通用文字颜色 */
+  background-color: #fff; /* 背景干净 */
+}
+
+/* ===== 正文段落、列表、引用 ===== */
+p, li, blockquote {
+  line-height: 1.8;
+  margin-bottom: 1.5em;
+  text-align: justify; /* 两端对齐 */
+}
+
+/* 列表（无序、有序） */
+ul, ol {
+  margin-left: 1.5em;
+  margin-bottom: 1.5em;
+  line-height: 1.8;
+}
+
+/* 引用块美化 */
+blockquote {
+  border-left: 4px solid #a0c4ff;
+  padding-left: 1em;
+  color: #555;
+  background-color: #f9f9f9;
+}
+
+/* ===== 代码块字体优化 ===== */
+code, pre {
+  font-family: 'Fira Code', 'Consolas', 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  background: #f6f8fa;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+/* ===== 标题美化（h1~h6） ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', 'Noto Serif SC', serif;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+  color: #222;
+}
+
+/* 分级标题大小 */
+h1 {
+  font-size: 2.5em;
+}
+h2 {
+  font-size: 2em;
+}
+h3 {
+  font-size: 1.75em;
+}
+h4 {
+  font-size: 1.5em;
+}
+h5 {
+  font-size: 1.25em;
+}
+h6 {
+  font-size: 1em;
+}
+
+/* ===== 链接美化 ===== */
+a {
+  color: #5c7cfa;
+  text-decoration: none;
+  border-bottom: 1px dashed #5c7cfa;
+  transition: all 0.3s;
+}
+a:hover {
+  color: #3b5bdb;
+  border-bottom: 1px solid #3b5bdb;
+}
+
+/* ===== 图片居中 ===== */
+img {
+  display: block;
+  margin: 1em auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===== 表格样式优化 ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+}
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 0.5em;
+  text-align: center;
+}
+table th {
+  background-color: #f1f3f5;
+}
