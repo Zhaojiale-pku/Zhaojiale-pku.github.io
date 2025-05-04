@@ -7,7 +7,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://zhaojiale-pku.github.io/img/1.jpg">
 <meta property="article:published_time" content="2025-05-03T09:56:22.171Z">
-<meta property="article:modified_time" content="2025-05-03T13:43:14.355Z">
+<meta property="article:modified_time" content="2025-05-04T03:54:11.438Z">
 <meta property="article:author" content="rainbow">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://zhaojiale-pku.github.io/img/1.jpg"><script type="application/ld+json">{
@@ -17,7 +17,7 @@
   "url": "https://zhaojiale-pku.github.io/2025/05/03/chapter%205/",
   "image": "https://zhaojiale-pku.github.io/img/1.jpg",
   "datePublished": "2025-05-03T09:56:22.171Z",
-  "dateModified": "2025-05-03T13:43:14.355Z",
+  "dateModified": "2025-05-04T03:54:11.438Z",
   "author": [
     {
       "@type": "Person",
@@ -158,7 +158,7 @@
   isHighlightShrink: false,
   isToc: false,
   pageType: 'post'
-}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/banner.jpg);"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/banner.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">彩虹的森林</span></a><a class="nav-page-title" href="/"><span class="site-name">数据结构与算法-二叉树与树总结</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">数据结构与算法-二叉树与树总结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-05-03T09:56:22.171Z" title="Created 2025-05-03 17:56:22">2025-05-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-05-03T13:43:14.355Z" title="Updated 2025-05-03 21:43:14">2025-05-03</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>注：此文仅为本人复习（其实是预习）所写，对除本人外的读者几乎没有价值。虽然其他的文章似乎也没有就是了。无用之用，O(∩_∩)O哈哈~。</p>
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/banner.jpg);"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/banner.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">彩虹的森林</span></a><a class="nav-page-title" href="/"><span class="site-name">数据结构与算法-二叉树与树总结</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">数据结构与算法-二叉树与树总结</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-05-03T09:56:22.171Z" title="Created 2025-05-03 17:56:22">2025-05-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-05-04T03:54:11.438Z" title="Updated 2025-05-04 11:54:11">2025-05-04</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>注：此文仅为本人复习（其实是预习）所写，对除本人外的读者几乎没有价值。虽然其他的文章似乎也没有就是了。无用之用，O(∩_∩)O哈哈~。</p>
 <p>5.1 二叉树及其抽象数据类型<br>定义：结点的有限集合，或为空（此时称为空二叉树），或由一个称为根的节点和两棵不相交的左子树和右子树（均为二叉树）组成。</p>
 <p>相关概念一览：<br>父节点、左（右）子节点、边<br>兄弟<br>祖先、子孙<br>路径、路径长度<br>结点的层数（注意根的层数为0）<br>结点的度数，二叉树中最大为2<br>二叉树的高度，只有一个结点的二叉树层数为0<br>树叶、分支节点</p>
 <p>特殊的二叉树<br>满二叉树：任何结点，要么是树叶，要么有两棵非空子树。<br>完全二叉树：只有最下面的两层结点度数小于2，其余都等于2。并且最后一层的结点都集中在最左端。<br>扩充二叉树：外部结点（树叶结点），内部结点。外部路径长度E，内部路径长度I</p>
@@ -194,64 +194,48 @@
 <figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//存储结构</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">PriorityQueue</span>&#123;</span><br>    <span class="hljs-type">int</span> MAXNUM;<br>    <span class="hljs-type">int</span> n;<br>    DataType*pq;<br>&#125;;<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">PriorityQueue</span>*<span class="hljs-title">PPriorityQueue</span>;</span><br><br><span class="hljs-comment">//插入，只保证局部有序，不保证全局有序。</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">add_heap</span><span class="hljs-params">(PPriorityQueue papq,DataType x)</span>&#123;<br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-keyword">if</span>(papq-&gt;n==papq-&gt;MAXNUM)&#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;FULL!\n&quot;</span>);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=papq-&gt;n;i&gt;<span class="hljs-number">0</span>&amp;&amp;papq-&gt;pq[(i<span class="hljs-number">-1</span>)/<span class="hljs-number">2</span>]&gt;x;i=(i<span class="hljs-number">-1</span>)/<span class="hljs-number">2</span>)&#123;<br>        papq-&gt;pq[i]=papq-&gt;pq[(i<span class="hljs-number">-1</span>)/<span class="hljs-number">2</span>];<br>    &#125;<br>    papq-&gt;pq[i]=x;<br>    papq-&gt;n++;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">isEmpty_heap</span><span class="hljs-params">(PPriorityQueue papq)</span>&#123;<br>    <span class="hljs-keyword">return</span>(papq-&gt;n==<span class="hljs-number">0</span>);<br>&#125;<br><br><span class="hljs-comment">//删除</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">removeMin_heap</span><span class="hljs-params">(PPriorityQueue papq)</span>&#123;<br>    <span class="hljs-type">int</span> s,i,child;<br>    DataType temp;<br>    <span class="hljs-keyword">if</span>(isEmpty_heap(papq))&#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Empty!\n&quot;</span>);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    s=--papq-&gt;n;<br>    temp=papq-&gt;pq[s];<br>    i=<span class="hljs-number">0</span>;child=<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span>(child&lt;s)&#123;<br>        <span class="hljs-keyword">if</span>(child&lt;s<span class="hljs-number">-1</span>&amp;&amp;papq-&gt;pq[child]&gt;papq-&gt;pq[child+<span class="hljs-number">1</span>])<br>          child++;<br>        <span class="hljs-keyword">if</span>(temp&gt;papq-&gt;pq[child])&#123;<br>            papq-&gt;pq[i]=papq-&gt;pq[child];<br>            i=child;<br>            child=<span class="hljs-number">2</span>*i+<span class="hljs-number">1</span>;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<br>    papq-&gt;pq[i]=temp;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>Huffman树及其应用<br>这个我之前研究了蛮久，算是比较清楚其原理</p>
-<pre><code class="language-c">struct HtNode&#123;
-    int ww;
-    int parent,llink,rlink;
-&#125;;
-struct HtTree&#123;
-    int m;
-    int root;
-    struct HtNode*ht;
-&#125;;
-typedef struct HtTree*PHtTree;
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAXINT 0x7FFFFFFF</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">HtNode</span>&#123;</span><br>    <span class="hljs-type">int</span> ww;<span class="hljs-comment">// 权值（weight）</span><br>    <span class="hljs-type">int</span> parent; <span class="hljs-comment">// 父节点的下标（-1表示无父节点）</span><br>    <span class="hljs-type">int</span> llink; <span class="hljs-comment">// 左孩子的下标</span><br>    <span class="hljs-type">int</span> rlink; <span class="hljs-comment">// 右孩子的下标</span><br>&#125;;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">HtTree</span>&#123;</span><br>    <span class="hljs-type">int</span> m;  <span class="hljs-comment">// 叶子结点的个数</span><br>    <span class="hljs-type">int</span> root; <span class="hljs-comment">// 根结点在数组中的下标</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">HtNode</span>*<span class="hljs-title">ht</span>;</span> <span class="hljs-comment">// 指向存储结点数组的指针（大小为 2m-1）</span><br>&#125;;<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">HtTree</span>*<span class="hljs-title">PHtTree</span>;</span><br><br><span class="hljs-comment">//Huffman算法</span><br>PHtTree <span class="hljs-title function_">huffman</span><span class="hljs-params">(<span class="hljs-type">int</span> m,<span class="hljs-type">int</span>*w)</span>&#123;<br>    PHtTree pht;<br>    <span class="hljs-type">int</span> i,j,x1,x2,m1,m2;<br>    pht=(PHtTree)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> HtTree));<br>    <span class="hljs-keyword">if</span>(pht==<span class="hljs-literal">NULL</span>)&#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Out of space!!\n&quot;</span>);<br>        <span class="hljs-keyword">return</span> pht;<br>    &#125;<br>    pht-&gt;ht=(<span class="hljs-keyword">struct</span> HtNode)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> HtNode)*(<span class="hljs-number">2</span>*m<span class="hljs-number">-1</span>));<br><br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">2</span> * m - <span class="hljs-number">1</span>; i++) &#123;<br>    pht-&gt;ht[i].ww = (i &lt; m) ? w[i] : <span class="hljs-number">0</span>;<br>    pht-&gt;ht[i].parent = <span class="hljs-number">-1</span>;<br>    pht-&gt;ht[i].llink = <span class="hljs-number">-1</span>;<br>    pht-&gt;ht[i].rlink = <span class="hljs-number">-1</span>;<br>    &#125;<br>    <br>    <span class="hljs-keyword">if</span>(pht-&gt;ht==<span class="hljs-literal">NULL</span>)&#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Out of space!!\n&quot;</span>);<br>        <span class="hljs-keyword">return</span> pht;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;m<span class="hljs-number">-1</span>;i++)&#123;<br>        m1=MAXINT;m2=MAXINT;<br>        x1=<span class="hljs-number">-1</span>;<br>        x2=<span class="hljs-number">-1</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j=<span class="hljs-number">0</span>;j&lt;m+i;j++)&#123;<br>            <span class="hljs-keyword">if</span>(pht-&gt;ht[j].ww&lt;m1&amp;&amp;pht-&gt;ht[j].parent==<span class="hljs-number">-1</span>)&#123;<br>                m2=m1;<br>                x2=x1;<br>                m1=pht-&gt;ht[j].ww;<br>                x1=j;<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(pht-&gt;ht[j].ww&lt;m2&amp;&amp;pht-&gt;ht[j].parent==<span class="hljs-number">-1</span>)&#123;<br>                m2=pht-&gt;ht[j].ww;<br>                x2=j;<br>            &#125;<br>        &#125;<br>        pht-&gt;ht[x1].parent=m+i;<br>        pht-&gt;ht[x2].parent=m+i;<br>        pht-&gt;ht[m+i].ww=m1+m2;<br>        pht-&gt;ht[m+i].llink=x1;<br>        pht-&gt;ht[m+i].rlink=x2;<br>    &#125;<br>    pht-&gt;root=<span class="hljs-number">2</span>*m<span class="hljs-number">-2</span>;<br>    <span class="hljs-keyword">return</span> pht;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>Huffman编码，亦即最优前缀编码</p>
+<p>5.5 树及其抽象数据类型</p>
+<p>树<br>结点的度数<br>树的度数<br>无序树<br>有序树<br>结点的层：根的层为0，其余结点的层为父结点层+1；<br>树的层数：结点的最大层数【空树：0，其它&gt;&#x3D;1】<br>树的深度和高度：结点的最大层数【空树：0，其它&gt;&#x3D;1】</p>
+<p>attention please：这里的树的层数、高度定义和之前不同，但取这里的定义，因为这是老师ppt上的，方便考试。</p>
+<p>树的存储表示</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//父结点表示法</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ParTreeNode</span>/* 树中结点结构 */</span><br><span class="hljs-class">&#123;</span><br>    DataType info;<span class="hljs-comment">/* 结点信息 */</span><br>    <span class="hljs-type">int</span> parent;<span class="hljs-comment">/* 父结点位置 */</span><br>&#125;ParTreeNode;<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ParTree</span>&#123;</span><br>    ParTreeNode nodelist[MAXNUM];<br>    <span class="hljs-type">int</span> n;<br>&#125;ParTree,*PParTree;<br><br><span class="hljs-comment">//子表表示法</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">EdgeNode</span>&#123;</span><br>    <span class="hljs-type">int</span> node_position;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">EdgeNode</span>*<span class="hljs-title">next</span>;</span><br>&#125;EdgeNode;<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ChiTreeNode</span>&#123;</span><br>    DataType info;<br>    EdgeNode*children;<br>&#125;ChiTreeNode;<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ChiTree</span>&#123;</span><br>    ChiTreeNode node_list[MAXNUM];<br>    <span class="hljs-type">int</span> root;<br>    <span class="hljs-type">int</span> n;<br>&#125;ChiTree,*PChiTree;<br><br><span class="hljs-comment">//如果没有root，如何找根？</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">find_root</span><span class="hljs-params">(ChiTree*tree)</span>&#123;<br>    <span class="hljs-type">bool</span> is_child[MAXNUM]=&#123;<span class="hljs-literal">false</span>&#125;;<br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;tree-&gt;n;++i)&#123;<br>        EdgeNode*edge=tree-&gt;node_list[i].children;<br>        <span class="hljs-keyword">while</span>(edge!=<span class="hljs-literal">NULL</span>)&#123;<br>            is_child[edge-&gt;node_position]=<span class="hljs-literal">true</span>;<br>            edge=edge-&gt;next;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;tree-&gt;n;++i)&#123;<br>        <span class="hljs-keyword">if</span>(!is_child[i])&#123;<br>            <span class="hljs-keyword">return</span> i;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>&#125;<br><br><span class="hljs-comment">//长子-兄弟表示法</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CSNode</span>&#123;</span><br>    DataType info;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CSNode</span>*<span class="hljs-title">lchild</span>;</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CSNode</span>*<span class="hljs-title">rsibling</span>;</span><br>&#125;CSTree,*PCSTree;<br><br><span class="hljs-comment">//思考如何修改长子-兄弟存储结构，更方便找双亲</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CSNode</span>&#123;</span><br>    DataType info;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CSNode</span>*<span class="hljs-title">parent</span>;</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CSNode</span>*<span class="hljs-title">lchild</span>;</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">CSNode</span>*<span class="hljs-title">rsibling</span>;</span><br>&#125;CSTree,*PCSTree;<br></code></pre></td></tr></table></figure>
 
-//Huffman算法
-PHtTree huffman(int m,int*w)&#123;
-    PHtTree pht;
-    int i,j,x1,x2,m1,m2;
-    pht=(PHtTree)malloc(sizeof(struct HtTree));
-    if(pht==NULL)&#123;
-        printf(&quot;Out of space!!\n&quot;);
-        return pht;
-    &#125;
-    pht-&gt;ht=(struct HtNode)malloc(sizeof(struct HtNode)*(2*m-1));
+<p>下面展示深度优先先根周游树的算法</p>
+<pre><code class="language-c">#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
 
-    for (i = 0; i &lt; 2 * m - 1; i++) &#123;
-    pht-&gt;ht[i].ww = (i &lt; m) ? w[i] : 0;
-    pht-&gt;ht[i].parent = -1;
-    pht-&gt;ht[i].llink = -1;
-    pht-&gt;ht[i].rlink = -1;
-    &#125;
-    
-    if(pht-&gt;ht==NULL)&#123;
-        printf(&quot;Out of space!!\n&quot;);
-        return pht;
-    &#125;
-    for(int i=0;i&lt;m-1;i++)&#123;
-        m1=MAXINT;m2=MAXINT;
-        x1=-1;
-        x2=-1;
-        for(int j=0;j&lt;m+i;j++)&#123;
-            if(pht-&gt;ht[j].ww&lt;m1&amp;&amp;pht-&gt;ht[j].parent==-1)&#123;
-                m2=m1;
-                x2=x1;
-                m1=pht-&gt;ht[j].ww;
-                x1=j;
-            &#125;
-            else if(pht-&gt;ht[j].ww&lt;m2&amp;&amp;pht-&gt;ht[j].parent==-1)&#123;
-                m2=pht-&gt;ht[j].ww;
-                x2=j;
-            &#125;
-        &#125;
-        pht-&gt;ht[x1].parent=m+i;
-        pht-&gt;ht[x2].parent=m+i;
-        pht-&gt;ht[m+i].ww=m1+m2;
-        pht-&gt;ht[m+i].llink=x1;
-        pht-&gt;ht[m+i].rlink=x2;
-    &#125;
-    pht-&gt;root=2*m-2;
-    return pht;
+#define MAXNUM 100
+
+typedef struct TreeNode&#123;
+    char data;
+    struct TreeNode*firstChild;
+    struct TreeNode*rightSibling;
+&#125;TreeNode;
+
+// 创建一个新结点
+TreeNode*createNode(char data)&#123;
+    TreeNode*node=(TreeNode*)malloc(sizeof(TreeNode));
+    node-&gt;data=data;
+    node-&gt;firstChild=NULL;
+    node-&gt;rightSibling=NULL;
+    return node;
 &#125;
+
+// 向某个结点添加孩子（按顺序添加）
+void addChild(TreeNode*parent,TreeNode*child)&#123;
+    if(parent-&gt;firstChild==NULL)&#123;
+        parent-&gt;firstChild=child;
+    &#125;else&#123;
+        TreeNode*temp=parent-&gt;firstChild;
+        while(temp-&gt;rightSibling!=NULL)
+            temp=temp-&gt;rightSibling;
+        temp-&gt;rightSibling=child;
+    &#125;
+&#125;
+
+// -------------------递归先根遍历--------------------
 </code></pre>
 </article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://Zhaojiale-pku.github.io">rainbow</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://zhaojiale-pku.github.io/2025/05/03/chapter%205/">https://zhaojiale-pku.github.io/2025/05/03/chapter%205/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/05/02/20250502/" title="普通的一天"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">普通的一天</div></div><div class="info-2"><div class="info-item-1">果然，放假写作业反人性。 本来晚上想写作业，结果看了一晚上小说。 什么时候才能达到“不以物喜不以己悲”的境界呢。 静不下来…… 嗯，明天加油。 </div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/1.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">rainbow</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="mailto:2400011336@stu.pku.edu.cn" target="_blank" title=""><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">在奔向星辰大海的路上</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/03/chapter%205/" title="数据结构与算法-二叉树与树总结">数据结构与算法-二叉树与树总结</a><time datetime="2025-05-03T09:56:22.171Z" title="Created 2025-05-03 17:56:22">2025-05-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/02/20250502/" title="普通的一天">普通的一天</a><time datetime="2025-05-02T14:51:58.297Z" title="Created 2025-05-02 22:51:58">2025-05-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/01/20250501/" title="灵山游记">灵山游记</a><time datetime="2025-05-01T14:59:58.393Z" title="Created 2025-05-01 22:59:58">2025-05-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/30/marriage/" title="试探，防备，互相伤害？爱情怎么了，婚姻怎么了。">试探，防备，互相伤害？爱情怎么了，婚姻怎么了。</a><time datetime="2025-04-30T14:56:31.322Z" title="Created 2025-04-30 22:56:31">2025-04-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/30/pain/" title="记忆碎片">记忆碎片</a><time datetime="2025-04-30T02:50:24.917Z" title="Created 2025-04-30 10:50:24">2025-04-30</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/banner.jpg);"><div id="footer-wrap"><div class="copyright">&copy;2025 By rainbow</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
 POWERMODE.shake = true;
