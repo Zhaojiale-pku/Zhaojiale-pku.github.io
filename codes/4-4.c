@@ -1,29 +1,36 @@
 #include<stdio.h>
 #include<string.h>
 
-#define MAX 1000000
+#define MAX 1000005
 
 char s[MAX];
+int next[MAX];
 
-void find_max(char*s){
-    int len=strlen(s);
-    int hash[256]={0};
-    for(int i=0;i<len;i++){
-        int c=(unsigned char)s[i];
-        hash[c]+=1;
-    }
-    int max=0;
-    for(int i=1;i<256;i++){
-        if(hash[i]>hash[max]){
-            max=i;
+void compute_next(char*s,int len){
+    int j=-1;
+    next[0]=-1;
+    for(int i=1;i<len;i++){
+        while(j!=-1&&s[i]!=s[j+1]){
+            j=next[j];
         }
+        if(s[i]==s[j+1]){
+            j++;
+        }
+        next[i]=j;
     }
-    printf("%d",hash[max]);
 }
 
 int main(){
     while(scanf("%s",s)&&strcmp(s,".")!=0){
-        find_max(s);
+        int len=strlen(s);
+        compute_next(s,len);
+        int lps=next[len-1]+1;
+        int period=len-lps;
+        if(len%period==0){
+            printf("%d\n",len/period);
+        }else{
+            printf("1\n");
+        }
     }
     return 0;
 }
