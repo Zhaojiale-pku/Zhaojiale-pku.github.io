@@ -1,0 +1,211 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>数据结构与算法-高级字典结构 | 彩虹的森林</title><meta name="author" content="rainbow"><meta name="copyright" content="rainbow"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="7.1 字典与索引7.1.1 字典的索引7.1.2 索引的抽象 7.2 字符树7.2.1 双链树表示7.2.2 多链表示 7.3 二叉排序树7.3.1 二叉排序树性质：如果任一节点的左子树非空，则左子树中的所有结点的关键码都小于根节点的关键码；如果任一节点的右子树非空，则右子树中的所有结点的关键码都大于结点的关键码。存储结构 struct BinSearchNode;typedef struct">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法-高级字典结构">
+<meta property="og:url" content="https://zhaojiale-pku.github.io/2025/06/17/chapter7/index.html">
+<meta property="og:site_name" content="彩虹的森林">
+<meta property="og:description" content="7.1 字典与索引7.1.1 字典的索引7.1.2 索引的抽象 7.2 字符树7.2.1 双链树表示7.2.2 多链表示 7.3 二叉排序树7.3.1 二叉排序树性质：如果任一节点的左子树非空，则左子树中的所有结点的关键码都小于根节点的关键码；如果任一节点的右子树非空，则右子树中的所有结点的关键码都大于结点的关键码。存储结构 struct BinSearchNode;typedef struct">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://zhaojiale-pku.github.io/img/1.jpg">
+<meta property="article:published_time" content="2025-06-17T09:26:46.909Z">
+<meta property="article:modified_time" content="2025-06-17T09:26:47.326Z">
+<meta property="article:author" content="rainbow">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhaojiale-pku.github.io/img/1.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "数据结构与算法-高级字典结构",
+  "url": "https://zhaojiale-pku.github.io/2025/06/17/chapter7/",
+  "image": "https://zhaojiale-pku.github.io/img/1.jpg",
+  "datePublished": "2025-06-17T09:26:46.909Z",
+  "dateModified": "2025-06-17T09:26:47.326Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "rainbow",
+      "url": "https://zhaojiale-pku.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/2.jpg"><link rel="canonical" href="https://zhaojiale-pku.github.io/2025/06/17/chapter7/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '数据结构与算法-高级字典结构',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/banner.jpg);"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/banner.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">彩虹的森林</span></a><a class="nav-page-title" href="/"><span class="site-name">数据结构与算法-高级字典结构</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">数据结构与算法-高级字典结构</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-06-17T09:26:46.909Z" title="Created 2025-06-17 17:26:46">2025-06-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-06-17T09:26:47.326Z" title="Updated 2025-06-17 17:26:47">2025-06-17</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>7.1 字典与索引<br>7.1.1 字典的索引<br>7.1.2 索引的抽象</p>
+<p>7.2 字符树<br>7.2.1 双链树表示<br>7.2.2 多链表示</p>
+<p>7.3 二叉排序树<br>7.3.1 二叉排序树<br>性质：如果任一节点的左子树非空，则左子树中的所有结点的关键码都小于根节点的关键码；如果任一节点的右子树非空，则右子树中的所有结点的关键码都大于结点的关键码。<br>存储结构</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BinSearchNode</span>;</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BinSearchNode</span>*<span class="hljs-title">PBinsearchNode</span>;</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BinSearchNode</span>&#123;</span><br>    KeyType key;<br>    PBinSearchNode llink,rlink;<br>&#125;;<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BinSearchNode</span>*<span class="hljs-title">BinSearchTree</span>;</span><br><span class="hljs-keyword">typedef</span> BinSearchTree*PBinSearchTree;<br></code></pre></td></tr></table></figure>
+
+<p>7.3.2 二叉排序树的检索<br>算法7.1 二叉排序树的检索算法</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">search</span><span class="hljs-params">(PBinSearchTree ptree,KeyType key,PBinSearchNode*position)</span>&#123;<br>    PBinSearchNode p,q;<br>    p=*ptree;q=p;<br>    <span class="hljs-keyword">while</span>(p!=<span class="hljs-literal">NULL</span>)&#123;<br>        q=p;<br>        <span class="hljs-keyword">if</span>(p-&gt;key==key)&#123;<br>            *position=p;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(p-&gt;key&gt;key)p=p-&gt;llink;<br>        <span class="hljs-keyword">else</span> p=p-&gt;rlink;<br>    &#125;<br>    *position=q;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>7.3.3 二叉排序树的插入和构造<br>算法7.2 二叉排序树中插入结点的算法</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">insert</span><span class="hljs-params">(PBinSearchTree ptree,KeyType key)</span>&#123;<br>    PBinSearchNode p,position;<br>    <span class="hljs-keyword">if</span>(search(ptree,key,&amp;position)==<span class="hljs-number">1</span>)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>    p=(PBinSearchNode)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> BinSearchNode));<br>    <span class="hljs-keyword">if</span>(p==<span class="hljs-literal">NULL</span>)&#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Error\n&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>    p-&gt;key=key;<br>    p-&gt;llink=p-&gt;rlink=<span class="hljs-literal">NULL</span>;<br>    <span class="hljs-keyword">if</span>(position==<span class="hljs-literal">NULL</span>)*ptree=p;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(key&lt;position-&gt;key)position-&gt;llink=p;<br>    <span class="hljs-keyword">else</span> position-&gt;rlink=p;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>算法7.3 二叉排序树的构造算法</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">createSearchTree</span><span class="hljs-params">(PBinSearchTree ptree,SeqDictionary*dic)</span>&#123;<br>    <span class="hljs-type">int</span> i;<br>    *ptree=<span class="hljs-literal">NULL</span>;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;dic-&gt;n;i++)&#123;<br>        <span class="hljs-keyword">if</span>(!insert(ptree,dic-&gt;element[i].key))&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>7.3.4 二叉排序树的删除</p>
+<p>算法7.4 二叉排序树的删除算法</p>
+<p>算法1<br>流程描述：<br>检索被删除结点<em>p<br>if（<em>p无左子女）<br>    用</em>p的右子女代替</em>p；<br>else{<br>    找<em>p的左子树中最右下结点</em>r；<br>    用<em>r的右指针指向</em>p的右子女；<br>    用<em>p的左子女代替</em>p；<br>}</p>
+ <figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">delete</span><span class="hljs-params">(PBinSearchTree ptree,KeyType key)</span>&#123;<br>   PBinSearchNode parentp,p,r;<br>   p=*ptree;parentp=<span class="hljs-literal">NULL</span>;<br>   <span class="hljs-keyword">while</span>(p!=<span class="hljs-literal">NULL</span>)&#123;<br>       <span class="hljs-keyword">if</span>(p-&gt;key==key)<span class="hljs-keyword">break</span>;<br>       parentp=p;<br>       <span class="hljs-keyword">if</span>(p-&gt;key&gt;key)p=p-&gt;llink;<br>       <span class="hljs-keyword">else</span> p=p-&gt;rlink;<br>   &#125;<br>   <span class="hljs-keyword">if</span>(p==<span class="hljs-literal">NULL</span>)<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>   <span class="hljs-keyword">if</span>(p-&gt;llink==<span class="hljs-literal">NULL</span>)&#123;<br>       <span class="hljs-keyword">if</span>(parentp==<span class="hljs-literal">NULL</span>)&#123;<br>           *ptree=p-&gt;rlink;<br>       &#125;<br>       <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(parentp-&gt;llink==p)&#123;<br>           parentp-&gt;llink=p-&gt;rlink;<br>       &#125;<br>       <span class="hljs-keyword">else</span>&#123;<br>           parentp-&gt;rlink=p-&gt;rlink;<br>       &#125;<br>   &#125;<br>   <span class="hljs-keyword">else</span>&#123;<span class="hljs-comment">/*有左子树*/</span><br>       r=p-&gt;llink;<br>       <span class="hljs-keyword">while</span>(r-&gt;rlink!=<span class="hljs-literal">NULL</span>)r=r-&gt;rlink;<br>       r-rlink=p-&gt;rlink;<br>       <span class="hljs-keyword">if</span>(parentp==<span class="hljs-literal">NULL</span>)*ptree=p-&gt;llink;<br>       <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(parentp-&gt;llink==p)<br>           parentp-&gt;llink=p-&gt;llink;<br>       <span class="hljs-keyword">else</span><br>           parentp-&gt;rlink=p-&gt;llink;<br>   &#125;<br>   <span class="hljs-built_in">free</span> p;<br>   <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>算法2<br>流程描述：<br>检索被删除结点<em>p；<br>if（<em>p无左子女）<br>    用</em>p的右子女代替</em>p；<br>else{<br>    找<em>p的左子树中最右下结点</em>r；<br>    用<em>r结点代替被删除的结点</em>p；<br>    用原来<em>r的左子女代替</em>r；<br>}<br>只需将前面的代码 &#x2F;<em>有左子树</em>&#x2F;的部分如下替换即可</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">else</span>&#123;<br>    PBinSearchNode rr=p;<br>    <span class="hljs-keyword">for</span>(r=p-&gt;llink;r-&gt;rlink!=<span class="hljs-literal">NULL</span>;r=r-&gt;rlink)rr=r;<br>    p-&gt;key=r-&gt;key;<br>    <span class="hljs-keyword">if</span>(rr=p)p-&gt;llink=r-&gt;llink;<br>    <span class="hljs-keyword">else</span> rr-&gt;rlink=r-&gt;llink;<br>    p=r;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>7.4 最佳二叉排序树</p>
+<p>7.4.1 基本概念<br>扩充二叉排序树<br>检索中平均比较次数最小，即E（n）最小的二叉排序树称作最佳二叉排序树</p>
+<p>7.4.2 等概率的检索<br>这里略去公式推导，我相信对于物院来说不成问题</p>
+<p>最佳二叉排序树的构造<br>(1)先将字典元素关键码排序<br>(2)对每个关键码按二分法在排序关键码序列中执行检索，将检索中遇到的还未在二叉排序树中的关键码插入二叉排序树中。<br>这里没太看懂原理，先跳过</p>
+<p>7.4.3 不等概的情况<br>花费，记作C(0,n)</p>
+<p>构造思想<br>好长，算了，直接上算法吧，磨磨唧唧的。</p>
+<p>算法7.5 构造具有不等权结点的最佳二叉排序树</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">opticBTree</span><span class="hljs-params">(<span class="hljs-type">float</span> p[],<span class="hljs-type">float</span> q[],<span class="hljs-type">float</span>*c[],<span class="hljs-type">float</span>*w[],<span class="hljs-type">int</span>*r[],<span class="hljs-type">int</span> n)</span>&#123;<br>    <span class="hljs-type">int</span> k0,i,j,k,m;<br>    <span class="hljs-type">float</span> min;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;=n;i++)&#123;<br>        <span class="hljs-keyword">for</span>(j=i;j&lt;=n;j++)&#123;<br>            c[i][j]=w[i][j]=<span class="hljs-number">0</span>;<br>            r[i][j]=<span class="hljs-number">0</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;=n;i++)&#123;<br>        w[i][i]=q[i];<br>        <span class="hljs-keyword">for</span>(j=i+<span class="hljs-number">1</span>;j&lt;=n;j++)&#123;<br>            w[i][j]=w[i][j<span class="hljs-number">-1</span>]+p[j]+q[j];<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(j=<span class="hljs-number">1</span>;j&lt;=n;j++)&#123;<br>        c[j<span class="hljs-number">-1</span>][j]=w[j<span class="hljs-number">-1</span>][j];<br>        r[j<span class="hljs-number">-1</span>][j]=j;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(m=<span class="hljs-number">2</span>;m&lt;=n;m++)&#123;<br>        <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;=n;i++)&#123;<br>            j=i+m;<br>            min=MAXVALUE;<br>            k0=i+<span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">for</span>(k=i+<span class="hljs-number">1</span>;k&lt;=j;k++)&#123;<br>                <span class="hljs-keyword">if</span>((c[i][k<span class="hljs-number">-1</span>]+c[k][j])&lt;min)&#123;<br>                    min=c[i][k<span class="hljs-number">-1</span>]+c[k][j];<br>                    k0=k;<br>                &#125;<br>            &#125;<br>            c[i][j]=w[i][j]+min;<br>            r[i][j]=k0;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>笑不活了，看不懂啊啊啊啊啊啊啊啊啊啊啊。还是先把概念过完吧。</p>
+<p>7.5 平衡二叉排序树<br>7.5.1 基本概念<br>平衡二叉排序树，又称AVL树<br>平衡二叉排序树中每个结点的左右子树高度之差绝对值不超过1.结点右子树高度与左子树高度之差称为该结点的平衡因子，平衡二叉排序树中每个结点的平衡因子只能是1，0，-1.</p>
+<p>最小不平衡树：指离插入结点最近，且以平衡因子绝对值大于1的结点为根的子树。</p>
+<p>调整平衡的模式<br>LL型调整<br>RR型调整<br>LR型调整<br>RL型调整</p>
+<p>7.5.3 实现</p>
+<p>存储结构</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">AVLNode</span>;</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">AVLNode</span>*<span class="hljs-title">PAVLNode</span>;</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">AVLNode</span>&#123;</span><br>    KeyType key;<br>    <span class="hljs-type">int</span> bf;<br>    PAVLNode llink,rlink;<br>&#125;;<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">AVLNode</span>*<span class="hljs-title">AVLTree</span>;</span><br><span class="hljs-keyword">typedef</span> AVLTree*PAVLTree;<br></code></pre></td></tr></table></figure>
+
+<p>元素的检索</p>
+<p>元素的插入</p>
+<p>算法7.6 AVL树的插入算法</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">avlInsert</span><span class="hljs-params">(PAVLTree ptree,KeyType key)</span>&#123;<br>    PAVLNode node_a,node_b,parent_a,p,q,node;<br>    <span class="hljs-type">int</span> d;<br>    <span class="hljs-keyword">if</span>(*ptree==<span class="hljs-literal">NULL</span>)&#123;<br>        *ptree=createNode(key);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>    node_a=p=*ptree;<br>    parent_a=q=<span class="hljs-literal">NULL</span>;<br>    <span class="hljs-keyword">while</span>(p!=<span class="hljs-literal">NULL</span>)&#123;<br>        <span class="hljs-keyword">if</span>(key==p-&gt;key)<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span>(p-&gt;bf!=<span class="hljs-number">0</span>)&#123;<br>            parent_a=q;<br>            node_a=p;<br>        &#125;<br>        q=p;<br>        <span class="hljs-keyword">if</span>(key&lt;p-&gt;key)p=p-&gt;llink;<br>        <span class="hljs-keyword">else</span> p=p-&gt;rlink;<br>    &#125;<br><br>    node=createNode(key);<br>    <span class="hljs-keyword">if</span>(key&lt;q-&gt;key)q-&gt;llink=node;<br>    <span class="hljs-keyword">else</span> q-&gt;rlink=node;<br>    <span class="hljs-keyword">if</span>(key&lt;node_a-&gt;key)&#123;<br>        p=node_b=node_a-&gt;llink;d=<span class="hljs-number">-1</span>;<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        p=node_b=node_a-&gt;rlink;d=<span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">while</span>(p!=node)&#123;<br>        <span class="hljs-keyword">if</span>(key&lt;p-&gt;key)&#123;<br>            p-&gt;bf=<span class="hljs-number">-1</span>;<br>            p=p-&gt;llink;<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            p-&gt;bf=<span class="hljs-number">1</span>;<br>            p=p-&gt;rlink;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(node_a-&gt;bf==<span class="hljs-number">0</span>)&#123;<br>        node_a-&gt;bf=d;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(node_a-&gt;bf==-d)&#123;<br>        node_a-&gt;bf=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(d==<span class="hljs-number">-1</span>)&#123;<br>        <span class="hljs-keyword">if</span>(node_b-&gt;bf==<span class="hljs-number">-1</span>)&#123;<br>            node_b=lL(node_a,node_b);<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            node_b=lR(node_a,node_b);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">if</span>(node_b-&gt;bf==<span class="hljs-number">1</span>)&#123;<br>            node_b=rR(node_a,node_b);<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            node_b=rL(node_a,node_b);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(parent_a==<span class="hljs-literal">NULL</span>)&#123;<br>        *ptree=node_b;<br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">if</span>(parent_a-&gt;llink==node_a)&#123;<br>            parent_a-&gt;llink=node_b;<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            parent_a-&gt;rlink=node_b;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>上述算法中调用的5个函数，如下：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c">PAVLNode <span class="hljs-title function_">createNode</span><span class="hljs-params">(KeyType key)</span>&#123;<br>    PAVLNode node=(PAVLNode)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(AVLNode));<br>    <span class="hljs-keyword">if</span>(node!=<span class="hljs-literal">NULL</span>)&#123;<br>        node-&gt;key=key;<br>        node-&gt;bf=<span class="hljs-number">0</span>;<br>        node-&gt;llink=node-&gt;rlink=<span class="hljs-literal">NULL</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> node;<br>&#125;<br><br>PAVLNode <span class="hljs-title function_">lL</span><span class="hljs-params">(PAVLNode a,PAVLNode b)</span>&#123;<br>    a-&gt;bf=<span class="hljs-number">0</span>;<br>    a-&gt;llink=b-&gt;rlink;<br>    b-&gt;bf=<span class="hljs-number">0</span>;<br>    b-&gt;llink=a;<br>    <span class="hljs-keyword">return</span> b;<br>&#125;<br><br>PAVLNode <span class="hljs-title function_">rR</span><span class="hljs-params">(PAVLNode a,PAVLNode b)</span>&#123;<br>    a-&gt;bf=<span class="hljs-number">0</span>;<br>    a-&gt;rlink=b-&gt;llink;<br>    b-&gt;bf=<span class="hljs-number">0</span>;<br>    b-&gt;llink=a;<br>    <span class="hljs-keyword">return</span> b;<br>&#125;<br><br>PAVLNode <span class="hljs-title function_">lR</span><span class="hljs-params">(PAVLNode a,PAVLNode b)</span>&#123;<br>    PAVLNode c=b-&gt;rlink;<br>    a-&gt;llink=c-&gt;rlink;<br>    b-&gt;rlink=c-&gt;llink;<br>    c-&gt;llink=b;<br>    c-&gt;rlink=a;<br>    <span class="hljs-keyword">switch</span>(c-&gt;bf)&#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:a-&gt;bf=<span class="hljs-number">0</span>;b-&gt;bf=<span class="hljs-number">0</span>;<span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">-1</span>:a-&gt;bf=<span class="hljs-number">1</span>;b-&gt;bf=<span class="hljs-number">0</span>;<span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:a-&gt;bf=<span class="hljs-number">0</span>;b-&gt;bf=<span class="hljs-number">-1</span>;<span class="hljs-keyword">break</span>;<br>    &#125;<br>    c-&gt;bf=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br>PAVLNode <span class="hljs-title function_">rL</span><span class="hljs-params">(PAVLNode a,PAVLNode b)</span>&#123;<br>    PAVLNode c=b-&gt;llink;<br>    a-&gt;rlink=c-&gt;llink;<br>    b-&gt;llink=c-&gt;rlink;<br>    c-&gt;llink=a;<br>    c-&gt;rlink=b;<br>    <span class="hljs-keyword">switch</span>(c-&gt;bf)&#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:a-&gt;bf=<span class="hljs-number">0</span>;b-&gt;bf=<span class="hljs-number">0</span>;<span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">-1</span>:a-&gt;bf=<span class="hljs-number">0</span>;b-&gt;bf=<span class="hljs-number">1</span>;<span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:a-&gt;bf=<span class="hljs-number">-1</span>;b-&gt;bf=<span class="hljs-number">0</span>;<span class="hljs-keyword">break</span>;<br>    &#125;<br>    c-&gt;bf=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br>算法分析<br><br>元素的删除<br>算法<span class="hljs-number">7.7</span> AVL树的删除算法框架<br>```c<br><span class="hljs-title function_">avlDelete</span><span class="hljs-params">(PAVLNode p)</span>&#123;<br>    查找被删除结点*p;<br>    <span class="hljs-keyword">while</span>(*p不是叶节点)<span class="hljs-keyword">do</span>&#123;<br>        <span class="hljs-keyword">if</span>(p-&gt;bf=<span class="hljs-number">1</span>)<br>            找*p右子树中最左下结点*r;<br>        <span class="hljs-keyword">else</span> 找*p左子树最右下结点*r;<br>        p-&gt;key=r-&gt;key;<br>        p=r;<br>    &#125;<br>    q=p;<br>    <span class="hljs-keyword">for</span>(p=parent(p);p-&gt;bf!=<span class="hljs-number">0</span>;p=parent(p))<br>        调整(删除*q结点后的)p-&gt;bf;<br>    调整(删除*q结点后的)p-&gt;bf;<br>    删除*q结点;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>补充问题<br>1、试编写一算法，求指定结点在给定的二叉排序树中所在的层数。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//数据结构</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BinSearchNode</span>;</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BinSearchNode</span>*<span class="hljs-title">PBinSearchNode</span>;</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BinSearchNode</span>&#123;</span><br>    KeyType key;<br>    PBinSearchNode llink,rlink;<br>&#125;;<br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BinSearchNode</span>*<span class="hljs-title">BinSearchTree</span>;</span><br><span class="hljs-keyword">typedef</span> BinSearchTree *PBinSearchTree;<br><br><span class="hljs-comment">//算法</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">search_layer</span><span class="hljs-params">(PBinTree pbtree,PBinTreeNode pnode)</span>&#123;<br>    <span class="hljs-type">int</span> layer=<span class="hljs-number">0</span>;<br>    PBinTreeeNode p=*pbtree;<br>    <span class="hljs-keyword">while</span>(p!=<span class="hljs-literal">NULL</span>)&#123;<br>        <span class="hljs-keyword">if</span>(p-&gt;key==pnode-&gt;key)&#123;<br>            <span class="hljs-keyword">return</span> layer;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(p-&gt;key&gt;pnode-&gt;key)&#123;<br>            p=p-&gt;llink;<br>            layer++;<br>        &#125;<br>        <span class="hljs-keyword">else</span>&#123;<br>            p=p-&gt;rlink;<br>            layer++;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>&#125;<br></code></pre></td></tr></table></figure></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://Zhaojiale-pku.github.io">rainbow</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://zhaojiale-pku.github.io/2025/06/17/chapter7/">https://zhaojiale-pku.github.io/2025/06/17/chapter7/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/06/17/chapter6/" title="数据结构与算法-集合与字典"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">数据结构与算法-集合与字典</div></div><div class="info-2"><div class="info-item-1">6.1集合及其抽象数据类型6.1.1基本概念6.1.2主要运算并集交集差集：两个集合的差集由第一个集合中的所有不在第二个集合里出现的元素组成。6.1.3抽象数据类型 6.2集合的实现6.2.1集合的位向量表示存储结构位向量是一种每个元素都是二进制位（即0&#x2F;1值）的数组。假设n是位向量的位数，所以（n+7）&#x2F;8算出来的是能保证容纳下所有位向量的最少字节数。 typedef struct&#123;    int size;    char*array;&#125;BitSet;//给定成员位置，确定在哪个字符中：which_char=idx&gt;&gt;3;//即：idx/8//确定哪一位：which_bit=idx&amp;07;//即：idx%8  算法实现 算法6.1 空集合的创建 BitSet*createEmptySetBit(int n)&#123;    int i;    BitSet*s=(BitSet*)malloc(sizeof(BitSet));    if(s!=NULL)&#123;       ...</div></div></div></a><a class="pagination-related" href="/2025/06/17/chapter8/" title="数据结构与算法-排序"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">数据结构与算法-排序</div></div><div class="info-2"><div class="info-item-1">8.1 基本概念待排序的记录在排序过程中全部存放在内存的称为内排序，否则称为外排序。 8.2 插入排序直接插入排序二分法插入排序表插入排序shell排序8.2.1 直接插入排序存储结构 typedef int KeyType;typedef int DataType;typedef struct&#123;    KeyType key;    DataType info;&#125;RecordNode;typedef struct&#123;    int n;    RecordNode*record;&#125;SortObject; 实话实说，这个存储结构冗杂的没谁了。 算法8.1 直接插入排序 void insertSort(SortObject*pvector)&#123;    int i,j;    RecordNode temp;    RecordNode*data=pvector-&gt;record;    for(i=1;i&lt;pvector-&gt;n;++i)&#123;        temp=data[i];       ...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/1.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">rainbow</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="mailto:2400011336@stu.pku.edu.cn" target="_blank" title=""><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">在奔向星辰大海的路上</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/KMP/" title="KMP算法详解">KMP算法详解</a><time datetime="2025-06-17T09:29:00.362Z" title="Created 2025-06-17 17:29:00">2025-06-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/huffman/" title="huffman编码">huffman编码</a><time datetime="2025-06-17T09:29:00.298Z" title="Created 2025-06-17 17:29:00">2025-06-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/code_exam/" title="机考准备-视死如归">机考准备-视死如归</a><time datetime="2025-06-17T09:29:00.286Z" title="Created 2025-06-17 17:29:00">2025-06-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/chapter9/" title="数据结构与算法-图">数据结构与算法-图</a><time datetime="2025-06-17T09:29:00.250Z" title="Created 2025-06-17 17:29:00">2025-06-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/chapter8/" title="数据结构与算法-排序">数据结构与算法-排序</a><time datetime="2025-06-17T09:29:00.238Z" title="Created 2025-06-17 17:29:00">2025-06-17</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/banner.jpg);"><div id="footer-wrap"><div class="copyright">&copy;2025 By rainbow</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

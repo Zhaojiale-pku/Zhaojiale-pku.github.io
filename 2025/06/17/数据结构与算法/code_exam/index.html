@@ -1,0 +1,299 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>机考准备-视死如归 | 彩虹的森林</title><meta name="author" content="rainbow"><meta name="copyright" content="rainbow"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="可以死了。完了。助教出题。有点意思。 一、time函数头文件:#include&lt;time.h&gt;函数原型:time_t time(time_t *t);功能:返回当前的日历时间（即从 1970 年 1 月 1 日 00:00:00 UTC 到现在的秒数，通常称为 Unix 时间戳）。参数:t：可以为 NULL，也可以是 time_t 类型变量的地址。如果不为 NULL，函数会把时间戳也写">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机考准备-视死如归">
+<meta property="og:url" content="https://zhaojiale-pku.github.io/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/code_exam/index.html">
+<meta property="og:site_name" content="彩虹的森林">
+<meta property="og:description" content="可以死了。完了。助教出题。有点意思。 一、time函数头文件:#include&lt;time.h&gt;函数原型:time_t time(time_t *t);功能:返回当前的日历时间（即从 1970 年 1 月 1 日 00:00:00 UTC 到现在的秒数，通常称为 Unix 时间戳）。参数:t：可以为 NULL，也可以是 time_t 类型变量的地址。如果不为 NULL，函数会把时间戳也写">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://zhaojiale-pku.github.io/img/1.jpg">
+<meta property="article:published_time" content="2025-06-17T09:29:00.286Z">
+<meta property="article:modified_time" content="2025-06-17T09:29:00.545Z">
+<meta property="article:author" content="rainbow">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zhaojiale-pku.github.io/img/1.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "机考准备-视死如归",
+  "url": "https://zhaojiale-pku.github.io/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/code_exam/",
+  "image": "https://zhaojiale-pku.github.io/img/1.jpg",
+  "datePublished": "2025-06-17T09:29:00.286Z",
+  "dateModified": "2025-06-17T09:29:00.545Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "rainbow",
+      "url": "https://zhaojiale-pku.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/2.jpg"><link rel="canonical" href="https://zhaojiale-pku.github.io/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/code_exam/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '机考准备-视死如归',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/banner.jpg);"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/banner.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">彩虹的森林</span></a><a class="nav-page-title" href="/"><span class="site-name">机考准备-视死如归</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">机考准备-视死如归</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-06-17T09:29:00.286Z" title="Created 2025-06-17 17:29:00">2025-06-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-06-17T09:29:00.545Z" title="Updated 2025-06-17 17:29:00">2025-06-17</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>可以死了。<br>完了。<br>助教出题。<br>有点意思。</p>
+<p>一、time函数<br>头文件:<br>#include&lt;time.h&gt;<br>函数原型:<br>time_t time(time_t *t);<br>功能:<br>返回当前的日历时间（即从 1970 年 1 月 1 日 00:00:00 UTC 到现在的秒数，通常称为 Unix 时间戳）。<br>参数:<br>t：可以为 NULL，也可以是 time_t 类型变量的地址。如果不为 NULL，函数会把时间戳也写入该地址。<br>返回值:<br>返回 time_t 类型的当前时间戳。<br>示例用法:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;time.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">time_t</span> now;<br>    time(&amp;now);  <span class="hljs-comment">// 等价于 now = time(NULL);</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;当前时间戳：%ld\n&quot;</span>, now);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>二、srand函数<br>头文件：<br>#include &lt;stdlib.h&gt;<br>函数原型：<br>void srand(unsigned int seed);</p>
+<p>功能<br>设定随机数生成器的“种子”，让 rand() 生成不同的随机数序列。通常使用 srand(time(NULL)) 来让每次程序运行产生不同的随机数。</p>
+<p>参数<br>seed：一个整数值，用作随机数生成器的种子。相同的种子会产生相同的随机序列。</p>
+<p>返回值<br>无（void 函数）。</p>
+<p>示例用法：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;time.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    srand(time(<span class="hljs-literal">NULL</span>));  <span class="hljs-comment">// 使用当前时间初始化种子</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>三、rand函数<br>#include &lt;stdlib.h&gt;<br>int rand(void);<br>功能<br>返回一个伪随机整数，范围是从 0 到 RAND_MAX（通常为 32767）。</p>
+<p>示例用法</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;time.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    srand(time(<span class="hljs-literal">NULL</span>));  <span class="hljs-comment">// 初始化随机种子</span><br>    <span class="hljs-type">int</span> r = rand();     <span class="hljs-comment">// 生成一个随机整数</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;随机数：%d\n&quot;</span>, r);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>while(n–){</p>
+<p>}一般是先判断，再减，然后执行{}中的内容</p>
+<p>printf数字不要加&amp;啊啊啊啊</p>
+<p>你在读取字符操作符（op）时用了：<br>scanf(“%c”, &amp;op);<br>这行可能会读取到前一个输入后的换行符或空格，导致 op 根本不是你想要的 ‘C’ 或 ‘Q’，而是 ‘\n’ 或 ‘ ‘。<br>✅解决方法：<br>在 %c 前加一个空格，跳过空白字符：<br>scanf(“ %c”, &amp;op);  &#x2F;&#x2F; 加了空格！</p>
+<p>&#x3D;&#x3D;才是比较，&#x3D;才是赋值</p>
+<p>&#x3D;&#x3D;才是比较啦啊啊啊啊啊，要形成肌肉记忆，不要老是错啊啊啊啊啊</p>
+<p>变量不要重名。</p>
+<p>如果在main函数中不能开大数组，那直接在宏定义后面开，没限制！</p>
+<p>数组不要开的刚刚好，要略大一点，防止老师卡边界恶心你</p>
+<p>long long型输出为%lld</p>
+<p>输入数字注意加&amp;</p>
+<p>tolower：将大写字母改成小写</p>
+<p>scanf() 返回成功读入的项数。如果返回 0，说明输入不是字符串，一般是无效输入。<br>所以判断使用<br>if (scanf(“%s %s”, s, t) !&#x3D; 2) {<br>    break;<br>}</p>
+<p>strcspn 是 C 标准库 &lt;string.h&gt; 中的一个函数，全称是 “string complement span”。</p>
+<p>✅ 函数原型<br>c<br>复制<br>编辑<br>size_t strcspn(const char *str1, const char *str2);<br>✅ 功能说明<br>strcspn(str1, str2) 会返回从 str1 开头起第一个出现在 str2 中的字符的位置（索引）。</p>
+<p>如果 str1 中没有任何字符出现在 str2 中，就返回 strlen(str1)。</p>
+<p>✅ 常见用途：去掉换行符 \n<br>c<br>复制<br>编辑<br>fgets(line, 205, stdin);              &#x2F;&#x2F; 读取一行字符串，可能含换行符<br>line[strcspn(line, “\n”)] &#x3D; ‘\0’;     &#x2F;&#x2F; 把换行符替换成结束符<br>这是 去除 fgets 读取字符串中的换行符 的标准写法。</p>
+<p>🧠 举个例子：<br>c<br>复制<br>编辑<br>#include &lt;stdio.h&gt;<br>#include &lt;string.h&gt;</p>
+<p>int main() {<br>    char s[] &#x3D; “hello, world\n”;<br>    size_t pos &#x3D; strcspn(s, “\n”);<br>    printf(“位置：%zu\n”, pos);      &#x2F;&#x2F; 输出位置<br>    s[pos] &#x3D; ‘\0’;                   &#x2F;&#x2F; 去掉换行符<br>    printf(“结果：%s\n”, s);         &#x2F;&#x2F; 输出处理后的字符串<br>    return 0;<br>}<br>输出：<br>复制<br>编辑<br>位置：12<br>结果：hello, world<br>🟡 你可以理解为：<br>strcspn(str, “\n”) 是返回字符串中 ‘\n’ 的下标位置。</p>
+<p>上面的易错点太过混乱，从这里往后要标序号</p>
+<ol>
+<li>s[strcspn(s,”\n”)]&#x3D;’\0’;注意这里的””和’’的使用！</li>
+<li>fgets的使用需要注意前后的换行符，因为它会读取换行符，所以使用的时候前面一般要加getchar()，后面要用加\0来使这个符合要求。fgets会读取空格。<br> getchar();<br> fgets(s,MAX,stdin);<br> s[strcspn(s,”\n”)]&#x3D;’\0’;</li>
+<li>定义数组的时候，如果要开一个26位，那就int a[26],从0到25,不要抽风int a[25]……</li>
+<li>int c &#x3D; (unsigned char)s[i];	✅ 安全：保证 c 的范围为 0~255，适合用于数组下标。返回ASII值</li>
+<li>赋值和比较傻傻分不清的毛病改不了是吧，妈的。</li>
+<li>🧠 strtok() 函数详解<br>📌 作用：<br>将一个字符串按照某个分隔符拆分成一系列“单词”（更准确地说，是“子字符串”）。</li>
+</ol>
+<p>✅ 函数原型：<br>c<br>复制代码<br>char *strtok(char *str, const char *delim);<br>参数解释：<br>str：要被分割的字符串。第一次调用时传原字符串；之后调用要传 NULL，表示继续分割上一次的字符串。</p>
+<p>delim：分隔符组成的字符串（比如 “ “ 表示用空格分割）。</p>
+<p>返回值：<br>返回指向每个被分割出的“单词”的指针。</p>
+<p>如果没有更多“单词”了，返回 NULL。</p>
+<p>✅ 示例说明：<br>c<br>复制代码<br>char line[] &#x3D; “one million one hundred one”;<br>char *token &#x3D; strtok(line, “ “);<br>第一次调用后：</p>
+<p>token 指向 “one”</p>
+<p>然后我们继续用 strtok(NULL, “ “) 得到下一个单词：</p>
+<p>c<br>复制代码<br>token &#x3D; strtok(NULL, “ “);  &#x2F;&#x2F; 第二次：返回 “million”<br>token &#x3D; strtok(NULL, “ “);  &#x2F;&#x2F; 第三次：返回 “one”<br>…<br>循环使用：</p>
+<p>c<br>复制代码<br>char *token &#x3D; strtok(line, “ “);<br>while (token !&#x3D; NULL) {<br>    &#x2F;&#x2F; 对每个 token 处理<br>    printf(“token &#x3D; %s\n”, token);<br>    token &#x3D; strtok(NULL, “ “);  &#x2F;&#x2F; 获取下一个单词<br>}<br>✅ 为什么能工作？<br>strtok() 内部使用了一个静态指针，记住了当前处理到哪里，因此只需要在第一次传入原始字符串，后面传 NULL 它就能继续上次的地方。</p>
+<p>⚠️ 注意事项<br>strtok 会修改原字符串，它会把分隔符（比如空格）改成 \0。</p>
+<p>所以 line 被分割后，不再是完整的字符串了。</p>
+<p>不是线程安全。如果你想在多线程中使用，建议用 strtok_r()。</p>
+<p>🧪 举个例子：<br>c<br>复制代码<br>char str[] &#x3D; “hello world from C”;<br>char *token &#x3D; strtok(str, “ “);</p>
+<p>while (token) {<br>    printf(“token: %s\n”, token);<br>    token &#x3D; strtok(NULL, “ “);<br>}<br>输出：</p>
+<p>vbnet<br>复制代码<br>token: hello<br>token: world<br>token: from<br>token: C<br>7.<br>#include &lt;stdio.h&gt;<br>#include &lt;string.h&gt;</p>
+<p>int main() {<br>    char str[] &#x3D; “one million one hundred one”;<br>    char *token;</p>
+<pre><code>// 第一次调用 strtok：传入原始字符串
+token = strtok(str, &quot; &quot;);
+
+// 循环：每次调用 strtok(NULL, &quot; &quot;) 继续分割
+while (token != NULL) &#123;
+    printf(&quot;token: %s\n&quot;, token);
+    token = strtok(NULL, &quot; &quot;);
+&#125;
+
+return 0;
+</code></pre>
+<p>}<br>一个例子，记得token做迭代用的是NULL<br>8. int类型函数要返回一个值，return！！！<br>9. 换行符还是很重要的，要加<br>10. 小心除法的分母为0<br>11. root要更新，换行符。<br>12. typedef struct TreeNode{<br>    char name[MAX_NAME_LEN];<br>    int count;<br>    struct TreeNode *left,*right;<br>}TreeNode;<br>这里注意定义子树指针的时候前面要有struct，这里的struct TreeNode是一个整体。<br>13. 初始要定义根指针为NULL<br>14. 浮点数的定义要有double或float，不要无脑用int嗷嗷嗷ε＝ε＝ε＝(#&gt;д&lt;)ﾉ<br>15. 分母有可能为0，一定要注意这个点<br>16. 不用重复定义相同的变量啊啊啊啊<br>17. 不要定义太大的数组或字符串在函数里边，大的要在外边定义<br>我现在打算做openjudge上面数据结构与算法的习题集。<br>这里给出题目的网址<br><a target="_blank" rel="noopener" href="http://dsalgo.openjudge.cn/">http://dsalgo.openjudge.cn/</a><br>&#x2F;<em>20250519</em>&#x2F;<br>第一章<br>1:A+B Problem<br><a href="/codes/1-1.c">1-1</a></p>
+<p>第二章<br>1:多项式加法<br><a href="/codes/2-1.c">2-1</a></p>
+<p>2:字符串插入<br><a href="/codes/2-2.c">2-2</a></p>
+<p>3:位查询<br><a href="/codes/2-3.c">2-3</a></p>
+<p>4:放苹果<br><a href="/codes/2-4.c">2-4</a></p>
+<p>6:大整数乘法<br><a href="/codes/2-6.c">2-6</a></p>
+<p>第三章<br>1:用队列对扑克牌排序<br><a href="/codes/3-1.c">3-1</a></p>
+<p>2:栈的基本操作<br><a href="/codes/3-2.c">3-2</a></p>
+<p>3:stack or queue<br><a href="/codes/3-3.c">3-3</a></p>
+<p>4:双端队列<br><a href="/codes/3-4.c">3-4</a></p>
+<p>5:等价表达式<br><a href="/codes/3-5.c">3-5</a><br>其实没有研究明白，但这么长是不可能考的，考了也不会做，遂暂时放弃。</p>
+<p>7:滑动窗口<br><a href="/codes/3-7.c">3-7</a></p>
+<p>8:抓住那头牛<br><a href="/codes/3-8.c">3-8</a></p>
+<p>9:发型糟糕的一天<br><a href="/codes/3-9.c">3-9</a></p>
+<p>10:括号画家<br><a href="/codes/3-10.c">3-10</a></p>
+<p>11:机器翻译<br><a href="/codes/3-11.c">3-11</a></p>
+<p>第四章</p>
+<p>3:全在其中<br><a href="/codes/4-3.c">4-3</a></p>
+<p>4:字符串乘方<br><a href="/codes/4-4.c">4-4</a></p>
+<p>5:英语数字转换器<br><a href="/codes/4-5.c">4-5</a></p>
+<p>6:统计字符数<br><a href="/codes/4-6.c">4-6</a></p>
+<p>7:Caesar 密码<br><a href="/codes/4-7.c">4-7</a></p>
+<p>8:古代密码<br><a href="/codes/4-8.c">4-8</a></p>
+<p>9:前缀中的周期<br><a href="/codes/4-9.c">4-9</a></p>
+<p>11:Seek the Name, Seek the Fame<br><a href="/codes/4-11.c">4-11</a></p>
+<p>第五章<br>4:由中根序列和后根序列重建二叉树<br><a href="/codes/5-4.c">5-4</a></p>
+<p>6:Hardwood Species<br><a href="/codes/5-6.c">5-6</a></p>
+<p>8:Tree Recovery<br><a href="/codes/5-8.c">5-8</a></p>
+<p>9:Binary Tree<br><a href="/codes/5-9.c">5-9</a></p>
+<hr>
+<p>老师又开始说考题是平时作业题改，但他的作业题都被助教魔改失真了，不过这里还是好好复习，倒也不必绝望。<br>为了准备老师的那道所谓的简单题，我决定重新做一做去年计算概论的机考题。</p>
+<p>题目一：查看双精度浮点数的内存二进制存储<br>题目描述<br>给定一个双精度的浮点数（8字节存储），采用16进制输出其内存中的二进制存储内容。<br>如输入7.5，内存中的8字节二进制存储内容是：<br>01000000 00011110 00000000 00000000 00000000 00000000 00000000 00000000<br>其16进制的输出为：0x401e0000 00000000（高低4字节之间有1空格分隔）。</p>
+<p>关于输入<br>输入一个双精度数，如：<br>7.5</p>
+<p>关于输出<br>采用16进制输出其内存的二进制存储内容，高低4字节之间有一空格分隔，且高低字节皆要输出8位16进制数。16进制的输出中采用小写字母，高字节前加0x，低字节不加。如：<br>0x401e0000 00000000</p>
+<p>例子输入<br>7.5<br>例子输出<br>0x401e0000 00000000<br>提示信息<br>注意高低4字节的顺序，输出时高低4字节之间有1空格分隔。</p>
+<p><a href="/codes/whq1.c">题目一代码</a><br>注意，十六进制的格式符为%x&#x2F;%X<br>八进制是%o；</p>
+<p>题目二：判断是否为C语言的合法标识符<br>题目描述<br>C语言中的合法标识符的定义为：以下划线或字母开头的字母数字串（含下划线）。<br>完成一个程序实现对输入的n个字符串进行判定，是否为C语言的合法标识符。如果是则输出1，不是则输出0</p>
+<p>关于输入<br>输入的第一行为一个数字，表明有几个输入字串。<br>后面每一行为一个长度不超过80的字符串。</p>
+<p>关于输出<br>对所有输入的字符串进行判断，是合法标识符则输出1，回车。否则输出0，回车。</p>
+<p>例子输入<br>5<br>hello_world<br>my god<br>i<br>_stdio<br>008A<br>例子输出<br>1<br>0<br>1<br>1<br>0<br><a href="/codes/whq2.c">题目二代码</a></p>
+<p>题目三：二分法（折半）迭代求根<br>题目描述<br>给定四个系数a、b、c和d就可以确定一个一元三次方程f(x) &#x3D; a<em>x^3+b</em>x^2+c<em>x^1+d</em>x^0。<br>一元三次方程的求根可以采用二分法（折半）迭代求解。<br>即：指定初始区间(x1,x2), 如果f(x1)*f(x2) &gt; 0, 则在(x1, x2)区间无解，否则在此区间有解。<br>简单化处理，(x1,x2)区间不包含x1和x2，且x1小于x2。</p>
+<p>要求：<br>1）输入f(x)的四个系数，确定方程；<br>2）输入初始区间。如果此区间无解，输出”(x1,x2)no-roots”；否则，二分法迭代求一个根，并输出结果（根和迭代次数）。<br>迭代精度EPS：1e-5，即10^-5。</p>
+<p>关于输入<br>两行<br>第一行是四个系数（a,b,c,d），逗号分割<br>第二行是初始区间(x1,x2)，逗号分割<br>如：<br>2,-4,3,-6<br>-10,10</p>
+<p>关于输出<br>如果初始区间无解，输出“(x1,x2)no-roots”。<br>否则，输出两行：根（小数点后保留3位）和迭代次数，各一行。<br>如：<br>2.000<br>23</p>
+<p>例子输入<br>2,-4,3,-6<br>-10,10<br>例子输出<br>2.000<br>23<br>提示信息<br>采用双精度double运算。<br>指定区间可能存在多个解（非单调情况），只输出一个。<br>迭代精度，不低于EPS, 即：如果数值 &gt; EPS，继续迭代。<br><a href="/codes/whq3.c">题目三代码</a></p>
+<p>题目四：输出特殊数（押题）<br>题目描述<br>如果一个正整数从高位开始（最高位为第1位），奇数位为奇数，偶数位为偶数，则称该数为一个特殊数，如5、14、121和1234等。<br>要求：输入n个正整数（n大于0，不超100），输出其中的特殊数。</p>
+<p>关于输入<br>两行，第1行是正整数的个数n，第2行是空格间隔的n个正整数。<br>如下面3个例子。<br>例子1：<br>3<br>101 211 985<br>例子2：<br>5<br>1234 2345 3456 4567 5678<br>例子3：<br>3<br>8 88 888</p>
+<p>关于输出<br>两行，第1行是特殊数的个数m，第2行是空格间隔的m个特殊数。<br>如特殊数的个数为0，则第2行输出***。<br>上面三个输入例子的输出分别为：<br>例子1：<br>2<br>101 985<br>例子2：<br>3<br>1234 3456 5678<br>例子3：<br>0</p>
+<hr>
+<p>例子输入<br>5<br>1234 2345 3456 4567 5678<br>例子输出<br>3<br>1234 3456 5678<br>提示信息<br>注意0个特殊数的输出差异。<br><a href="/codes/whq4.c">题目四代码</a></p>
+<p>题目五：求回文素数<br>题目描述<br>对于某个正整数，如果既是素数也是回文数，则该正整数是一“回文素数”，如313。<br>程序要求：输入一个数值范围（最小值不小于10），输出该数值范围内的所有回文素数。<br>如：数值范围300到400的回文素数包括：313 353 373 383。</p>
+<p>关于输入<br>数值范围（空格分割），如：<br>300 400</p>
+<p>关于输出<br>输出该范围的所有回文素数（每行1个）。</p>
+<p>例子输入<br>300 400<br>例子输出<br>313<br>353<br>373<br>383<br>提示信息<br>正整数，数值范围的最小值大于10。、<br><a href="/codes/whq5.c">题目五代码</a></p>
+<p>题目六：简单的进制转换器<br>题目描述<br>聪明的小Y在学习完关于进制的知识后，希望实现一个进制转换器，它能实现非负整数的任意进制转换。小Y想到在16进制中，0<del>9表示10进制中的0</del>9，A<del>F表示10进制中的10</del>15。比如，16进制中的1E3表示10进制中的1<em>16</em>16+14*16+3&#x3D;483.用同样的方法，使用0～9，A～Z这36个符号最多可以表示36进制的数。因此，小Y决定先实现一个简单的进制转化器，它能够实现2到36之间的任意两个进制下的非负整数的转换。<br>在使用时，用户先输入一个m，然后再输入一个m进制的数a，最后输入一个n，转换器会输出a的n进制表示。</p>
+<p>关于输入<br>第一行是正整数k，表示测试的组数。<br>接下来是3k行，表示k组测试的输入。每组测试包含三行。<br>第一行是整数m（2&lt;&#x3D;m&lt;&#x3D;36），表示待转换数的进制。<br>第二行是m进制下的合法非负整数a，0&lt;&#x3D;a&lt;2^20（10进制下）.<br>第三行是整数n（2&lt;&#x3D;n&lt;&#x3D;36），表示输出数字的进制。</p>
+<p>关于输出<br>k行，每行是一组测试的输出。</p>
+<p>例子输入<br>3<br>10<br>21<br>2<br>16<br>ABCD<br>8<br>17<br>A620<br>9<br>例子输出<br>10101<br>125715<br>76733<br>提示信息<br>可以将十进制数作为中间变量实现任意进制间的转化，即把m进制数传化成十进制数，再把这个十进制数转化成n进制数。<br><a href="/codes/whq6.c">题目六代码</a></p>
+<hr>
+<p><a href="/pdf/%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%B8%8A%E6%9C%BA.pdf">第一章题目描述</a><br><a href="/codes/1_code.c">代码</a></p>
+<p>现有上机考试信息：<br>一道很简单的题，来自计算概论的期末考试，在机考中也出现过。<br>排序一定会考<br>树和二叉树的题最难，代码长度达258；（应该是Huffman的通讯模拟）<br>图的题目来自数据结构与算法常考的笔试题（四选一），且要求解两个结果<br>其他题目大都来自平时作业题<br>一共五道题<br>且多个题要利用fgets进行字符串读写（大于或等于三道）<br>同时排序题的输出是相邻两个之间空一格（应该是基数排序的逐趟输出）<br>树和二叉树是第三题，那么第二题是前面的部分</p>
+<p>第一题应该是输出特殊数，即奇数项为奇数，偶数项为偶数<br>第二题应该是输入字符串内容的读取<br>第三题是Huffman编码的通讯模拟<br>第四题是基数排序的历次结果输出<br>第五题是判断一个无向图是否所有点互联，是够有环</p>
+<p>笔试：堆的插入删除</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://Zhaojiale-pku.github.io">rainbow</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://zhaojiale-pku.github.io/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/code_exam/">https://zhaojiale-pku.github.io/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/code_exam/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></div><div class="post-share"><div class="social-share" data-image="/img/1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/chapter9/" title="数据结构与算法-图"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">数据结构与算法-图</div></div><div class="info-2"><div class="info-item-1">9.1 基本概念及其抽象数据类型9.1.1...</div></div></div></a><a class="pagination-related" href="/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/huffman/" title="huffman编码"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">huffman编码</div></div><div class="info-2"><div class="info-item-1">题目描述 #include&lt;stdio.h&gt;#include&lt;stdlib.h&gt;void swap(int*a,int*b)&#123;	int temp=*a;	*a=*b;	*b=temp;&#125;void heapify_down(int arr[],int size,int i)&#123;	int smallest=i;	int left=2*i+1;	int right=2*i+2;	if(left&lt;size&amp;&amp;arr[left]&lt;arr[smallest])&#123;		smallest=left;	&#125;	if(right&lt;size&amp;&amp;arr[right]&lt;arr[smallest])&#123;		smallest=right;	&#125;	if(smallest!=i)&#123;		swap(&amp;arr[smallest],&amp;arr[i]);		heapify_down(arr,size,smallest);	&#125;&#125;void...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/chapter%205/" title="数据结构与算法-二叉树与树总结"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-17</div><div class="info-item-2">数据结构与算法-二叉树与树总结</div></div><div class="info-2"><div class="info-item-1">注：此文仅为本人复习（其实是预习）所写，对除本人外的读者几乎没有价值。虽然其他的文章似乎也没有就是了。无用之用，O(∩_∩)O哈哈~。 5.1 二叉树及其抽象数据类型定义：结点的有限集合，或为空（此时称为空二叉树），或由一个称为根的节点和两棵不相交的左子树和右子树（均为二叉树）组成。 相关概念一览：父节点、左（右）子节点、边兄弟祖先、子孙路径、路径长度结点的层数（注意根的层数为0）结点的度数，二叉树中最大为2二叉树的高度，只有一个结点的二叉树层数为0树叶、分支节点 特殊的二叉树满二叉树：任何结点，要么是树叶，要么有两棵非空子树。完全二叉树：只有最下面的两层结点度数小于2，其余都等于2。并且最后一层的结点都集中在最左端。扩充二叉树：外部结点（树叶结点），内部结点。外部路径长度E，内部路径长度I 二叉树的一些性质 二叉树的抽象数据类型 5.2 二叉树的周游 深度优先周游先根次序后根次序对称（中根）次序 递归算法 非递归算法 //二叉树二叉链表结构定义#define M 100struct BinTreeNode&#123;    DataType info;    struct...</div></div></div></a><a class="pagination-related" href="/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/chapter6/" title="数据结构与算法-集合与字典"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-17</div><div class="info-item-2">数据结构与算法-集合与字典</div></div><div class="info-2"><div class="info-item-1">6.1集合及其抽象数据类型6.1.1基本概念6.1.2主要运算并集交集差集：两个集合的差集由第一个集合中的所有不在第二个集合里出现的元素组成。6.1.3抽象数据类型 6.2集合的实现6.2.1集合的位向量表示存储结构位向量是一种每个元素都是二进制位（即0&#x2F;1值）的数组。假设n是位向量的位数，所以（n+7）&#x2F;8算出来的是能保证容纳下所有位向量的最少字节数。 typedef struct&#123;    int size;    char*array;&#125;BitSet;//给定成员位置，确定在哪个字符中：which_char=idx&gt;&gt;3;//即：idx/8//确定哪一位：which_bit=idx&amp;07;//即：idx%8  算法实现 算法6.1 空集合的创建 BitSet*createEmptySetBit(int n)&#123;    int i;    BitSet*s=(BitSet*)malloc(sizeof(BitSet));    if(s!=NULL)&#123;       ...</div></div></div></a><a class="pagination-related" href="/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/chapter7/" title="数据结构与算法-高级字典结构"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-17</div><div class="info-item-2">数据结构与算法-高级字典结构</div></div><div class="info-2"><div class="info-item-1">7.1 字典与索引7.1.1 字典的索引7.1.2 索引的抽象 7.2 字符树7.2.1 双链树表示7.2.2 多链表示 7.3 二叉排序树7.3.1 二叉排序树性质：如果任一节点的左子树非空，则左子树中的所有结点的关键码都小于根节点的关键码；如果任一节点的右子树非空，则右子树中的所有结点的关键码都大于结点的关键码。存储结构 struct BinSearchNode;typedef struct BinSearchNode*PBinsearchNode;struct BinSearchNode&#123;    KeyType key;    PBinSearchNode llink,rlink;&#125;;typedef struct BinSearchNode*BinSearchTree;typedef BinSearchTree*PBinSearchTree;  7.3.2 二叉排序树的检索算法7.1 二叉排序树的检索算法 int search(PBinSearchTree ptree,KeyType key,PBinSearchNode*position)&#123;...</div></div></div></a><a class="pagination-related" href="/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/KMP/" title="KMP算法详解"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-17</div><div class="info-item-2">KMP算法详解</div></div><div class="info-2"><div class="info-item-1">void compute_next(char*patterm,int len)&#123;    next[0]=-1;    int j=-1;    for(int i=1;i&lt;len;i++)&#123;        while(j!=-1&amp;&amp;pattern[i]!=pattern[j+1])&#123;            j=next[j];        &#125;        if(pattern[i]==pattern[j+1])&#123;            j++;        &#125;        next[i]=j;    &#125;&#125;int kmp_match(char *text,char*pattern)&#123;    int n=strlen(text);    int m=strlen(pattern);    compute_next(pattern,m);    int j=-1;    for(int i=0;i&lt;n;i++)&#123;       ...</div></div></div></a><a class="pagination-related" href="/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/chapter8/" title="数据结构与算法-排序"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-17</div><div class="info-item-2">数据结构与算法-排序</div></div><div class="info-2"><div class="info-item-1">8.1 基本概念待排序的记录在排序过程中全部存放在内存的称为内排序，否则称为外排序。 8.2 插入排序直接插入排序二分法插入排序表插入排序shell排序8.2.1 直接插入排序存储结构 typedef int KeyType;typedef int DataType;typedef struct&#123;    KeyType key;    DataType info;&#125;RecordNode;typedef struct&#123;    int n;    RecordNode*record;&#125;SortObject; 实话实说，这个存储结构冗杂的没谁了。 算法8.1 直接插入排序 void insertSort(SortObject*pvector)&#123;    int i,j;    RecordNode temp;    RecordNode*data=pvector-&gt;record;    for(i=1;i&lt;pvector-&gt;n;++i)&#123;        temp=data[i];       ...</div></div></div></a><a class="pagination-related" href="/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/chapter9/" title="数据结构与算法-图"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-17</div><div class="info-item-2">数据结构与算法-图</div></div><div class="info-2"><div class="info-item-1">9.1 基本概念及其抽象数据类型9.1.1...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/1.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">rainbow</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">36</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="mailto:2400011336@stu.pku.edu.cn" target="_blank" title=""><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">在奔向星辰大海的路上</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/KMP/" title="KMP算法详解">KMP算法详解</a><time datetime="2025-06-17T09:29:00.362Z" title="Created 2025-06-17 17:29:00">2025-06-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/huffman/" title="huffman编码">huffman编码</a><time datetime="2025-06-17T09:29:00.298Z" title="Created 2025-06-17 17:29:00">2025-06-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/code_exam/" title="机考准备-视死如归">机考准备-视死如归</a><time datetime="2025-06-17T09:29:00.286Z" title="Created 2025-06-17 17:29:00">2025-06-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/chapter9/" title="数据结构与算法-图">数据结构与算法-图</a><time datetime="2025-06-17T09:29:00.250Z" title="Created 2025-06-17 17:29:00">2025-06-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/chapter8/" title="数据结构与算法-排序">数据结构与算法-排序</a><time datetime="2025-06-17T09:29:00.238Z" title="Created 2025-06-17 17:29:00">2025-06-17</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/banner.jpg);"><div id="footer-wrap"><div class="copyright">&copy;2025 By rainbow</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
