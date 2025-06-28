@@ -6,7 +6,8 @@ int is_special(int num){
 	sprintf(str,"%d",num);
 	int len=strlen(str);
 	for(int i=0;i<len;i++){
-		if(((str[i]-'0')%2==0&&i%2==0)||((str[i]-'0')%2==1&&i%2==1)){
+		int digit=str[i]-'0';
+		if((i%2==0&&digit%2==0)||(i%2==1&&digit%2==1)){
 			return 0;
 		}
 	}
@@ -16,19 +17,19 @@ int is_special(int num){
 int main(){
 	int n;
 	scanf("%d",&n);
-	int special_nums[100];
-	int special_count=0;
-	int num;
+	int nums[100];
 	for(int i=0;i<n;i++){
-		scanf("%d",&num);
-		if(is_special(num)){
-			special_nums[special_count++]=num;
+		scanf("%d",&nums[i]);
+	}
+	int special_count=0;
+	int special_nums[100];
+	for(int i=0;i<n;i++){
+		if(is_special(nums[i])){
+			special_nums[special_count++]=nums[i];
 		}
 	}
 	printf("%d\n",special_count);
-	if(special_count==0){
-		printf("***\n");
-	}else{
+	if(special_count>0){
 		for(int i=0;i<special_count;i++){
 			if(i>0){
 				printf(" ");
@@ -36,6 +37,8 @@ int main(){
 			printf("%d",special_nums[i]);
 		}
 		printf("\n");
+	}else{
+		printf("***\n");
 	}
 	return 0;
 }
